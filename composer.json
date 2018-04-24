@@ -1,0 +1,12 @@
+{
+    "name": "senhung/command-line-interface",
+    "description": "An easy php command setter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Senhung",
+            "email": "0x53656e@gmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -6,8 +6,6 @@ A package imitating [Aritsan Console](https://laravel.com/docs/5.6/artisan) for 
 
 ## Example
 
-An example is included in `Commands/Greet.php` and `example`.
-
 ### Example Entry
 
 ```php
@@ -15,7 +13,7 @@ An example is included in `Commands/Greet.php` and `example`.
 
 /* file: example */
 
-require_once $_SERVER['DOCUMENT_ROOT'] . 'src/CommandEntry.php';
+require_once 'vendor/autoload.php';
 
 use CLI\CommandEntry;
 
@@ -33,8 +31,6 @@ CommandEntry::entry($argv);
 /* file: Commands/Greet.php */
 
 namespace Example;
-
-require_once $_SERVER['DOCUMENT_ROOT'] . 'src/Command.php';
 
 use CLI\Command;
 

@@ -1,12 +1,19 @@
 {
     "name": "senhung/command-line-interface",
-    "description": "An easy php command setter",
+    "description": "A php script command setter",
     "license": "MIT",
     "authors": [
         {
-            "name": "Senhung",
+            "name": "Senhung Wong",
             "email": "0x53656e@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Command\\": "src/Command.php",
+            "CommandEntry\\": "src/CommandEntry.php",
+            "files": ["src/Command.php", "src/CommandEntry.php"]
+        }
+    },
     "require": {}
 }

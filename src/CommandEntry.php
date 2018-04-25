@@ -2,7 +2,7 @@
 
 namespace CLI;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . 'src/Command.php';
+require_once 'Command.php';
 
 class CommandEntry
 {

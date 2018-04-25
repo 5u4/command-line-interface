@@ -2,7 +2,7 @@
 
 namespace CLI;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . 'src/Service.php';
+require_once 'Service.php';
 
 class Command
 {

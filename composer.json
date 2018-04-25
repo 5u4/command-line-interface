@@ -10,8 +10,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Command\\": "src/Command.php",
-            "CommandEntry\\": "src/CommandEntry.php"
+            "Command\\": "src/",
+            "CommandEntry\\": "src/"
         },
         "files": ["src/Command.php", "src/CommandEntry.php"]
     },

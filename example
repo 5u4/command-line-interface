@@ -1,0 +1,9 @@
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . 'src/CommandEntry.php';
+
+use CLI\CommandEntry;
+
+CommandEntry::load('Commands');
+
+CommandEntry::entry($argv);

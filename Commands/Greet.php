@@ -14,6 +14,6 @@ class Greet extends Command
 
     public function handle()
     {
-        print 'Hello';
+        print "Hello \n";
     }
 }

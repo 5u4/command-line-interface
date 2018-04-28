@@ -6,21 +6,60 @@ require_once 'Command.php';
 
 class CommandEntry
 {
+    /** @var array $commands */
+    private static $commands;
+    /** @var bool $initialized */
+    private static $initialized = false;
+
+    private static function initialize()
+    {
+        if (self::$initialized) {
+            return;
+        }
+
+        self::$commands = Service::getAllCommands();
+    }
+
     /**
      * @param $argv
      * @return void
      */
     public static function entry($argv): void
     {
-        $commands = Service::getAllCommands();
+        self::initialize();
 
-        $command = $argv[1];
-
-        if (!isset($command) || !in_array($command, array_keys($commands))) {
+        /* Check Command Entered */
+        if (isset($argv[1])) {
+            $command = $argv[1];
+        } else {
             return;
         }
 
-        Service::runCommand($commands[$command]);
+        /* Check Command Defined */
+        if (!in_array($command, array_keys(self::$commands))) {
+            return;
+        }
+
+        $arguments = [];
+        $options = [];
+
+        for ($index = 2; $index < count($argv); $index++) {
+            list($key, $value) = Service::parse($argv[$index]);
+
+            $type = Service::determineTypeOfWord($argv[$index]);
+
+            /* Option */
+            if ($type == Service::OPTION_TYPE) {
+                if (!$value) {
+                    $options[$key] = true;
+                } else {
+                    $options[$key] = $value;
+                }
+            }
+        }
+
+        /* Run Command Handle */
+        Service::runCommand(self::$commands[$command], $arguments, $options);
     }
 
     /**
@@ -31,6 +70,8 @@ class CommandEntry
      */
     public static function load(string $dir): void
     {
+        self::initialize();
+
         $commandDir = $_SERVER['DOCUMENT_ROOT'] . $dir;
 
         $files = scandir($commandDir);

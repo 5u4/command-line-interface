@@ -6,11 +6,11 @@ require_once 'Service.php';
 
 class Command
 {
-    protected $command;
+    private $command;
 
-    protected $arguments;
+    private $arguments;
 
-    protected $options;
+    private $options;
 
     public $signature;
 
@@ -24,6 +24,23 @@ class Command
         $this->options = $parsedSignature[2];
     }
 
+    public function update(array $arguments = null, array $options = null)
+    {
+        /* Update Arguments */
+        if ($arguments) {
+            foreach ($arguments as $argument => $value) {
+                $this->arguments[$argument] = $value;
+            }
+        }
+
+        /* Update Options */
+        if ($options) {
+            foreach ($options as $option => $value) {
+                $this->options[$option] = $value;
+            }
+        }
+    }
+
     public function handle()
     {
 
@@ -34,13 +51,21 @@ class Command
         return $this->command;
     }
 
-    public function getArguments()
+    protected function getArgument(string $argument)
     {
-        return $this->arguments;
+        if (isset($this->arguments[':' . $argument])) {
+            return $this->arguments[':' . $argument];
+        }
+
+        return null;
     }
 
-    public function getOptions()
+    protected function getOption(string $option)
     {
-        return $this->options;
+        if (isset($this->options['--' . $option])) {
+            return $this->options['--' . $option];
+        }
+
+        return null;
     }
 }

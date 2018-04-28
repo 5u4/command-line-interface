@@ -1,6 +1,6 @@
 <?php
 
-namespace CLI;
+namespace Senhung\CLI;
 
 require_once 'Service.php';
 

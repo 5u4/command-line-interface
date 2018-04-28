@@ -15,7 +15,7 @@ A package imitating [Aritsan Console](https://laravel.com/docs/5.6/artisan) for 
 
 require_once 'vendor/autoload.php';
 
-use CLI\CommandEntry;
+use Senhung\CLI\CommandEntry;
 
 CommandEntry::load('Commands');
 
@@ -32,7 +32,7 @@ CommandEntry::entry($argv);
 
 namespace Example;
 
-use CLI\Command;
+use Senhung\CLI\Command;
 
 class Greet extends Command
 {

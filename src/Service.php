@@ -1,6 +1,6 @@
 <?php
 
-namespace CLI;
+namespace Senhung\CLI;
 
 class Service
 {
@@ -13,7 +13,7 @@ class Service
         /* Get All Commands */
         $commands = [];
         foreach (get_declared_classes() as $class) {
-            if (is_subclass_of($class, 'CLI\Command')) {
+            if (is_subclass_of($class, 'Senhung\CLI\Command')) {
                 $commandObject = new $class;
                 $command = $commandObject->getCommand();
                 $commands[$command] = $class;

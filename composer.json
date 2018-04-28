@@ -10,10 +10,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Command\\": "src/",
-            "CommandEntry\\": "src/"
+            "Senhung\\Command\\": "src/",
+            "Senhung\\CommandEntry\\": "src/"
         },
         "files": ["src/Command.php", "src/CommandEntry.php"]
     },
-    "require": {}
+    "require": {
+        "php": ">=7.1.0"
+    }
 }

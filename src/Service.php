@@ -66,11 +66,6 @@ class Service
     {
         $word = ltrim(rtrim(trim($word), '}'), '{');
 
-//        /* Cannot Parse Command Type */
-//        if (self::determineTypeOfWord($word) == self::COMMAND_TYPE) {
-//            return [null, null];
-//        }
-
         /* Having Default Value */
         if ($separatorPosition = strpos($word, '=')) {
             $key = substr($word, 0, $separatorPosition);

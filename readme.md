@@ -112,6 +112,20 @@ $ php <entry-file-name> <command> <argument> <--opiton-as-a-flag> <--option-as-a
 
 **Note: The order of arguments is important, but the order of options is not**
 
+### Help
+
+Call the following to get all commands:
+
+```bash
+$ php <entry-file-name> help
+```
+
+You can add one more argument for getting specific function's description
+
+```bash
+$ php <entry-file-name> help <command>
+```
+
 ## Example
 
 ### Example Entry

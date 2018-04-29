@@ -3,6 +3,7 @@
 namespace Senhung\CLI;
 
 require_once 'Command.php';
+require_once 'Help.php';
 
 class CommandEntry
 {
@@ -88,5 +89,10 @@ class CommandEntry
 
             require_once $_SERVER['DOCUMENT_ROOT'] . $dir . '/' . $file;
         }
+    }
+
+    public static function getCommands()
+    {
+        return self::$commands;
     }
 }

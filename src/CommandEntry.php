@@ -56,6 +56,11 @@ class CommandEntry
                     $options[$key] = $value;
                 }
             }
+
+            /* Argument */
+            else {
+                $arguments[] = $key;
+            }
         }
 
         /* Run Command Handle */

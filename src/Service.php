@@ -45,7 +45,8 @@ class Service
 
             /* Argument */
             elseif ($type == self::ARGUMENT_TYPE) {
-                continue;
+                list($key, $defaultValue) = self::parse($word);
+                $arguments[$key] = $defaultValue;
             }
         }
 
@@ -65,10 +66,10 @@ class Service
     {
         $word = ltrim(rtrim(trim($word), '}'), '{');
 
-        /* Cannot Parse Command Type */
-        if (self::determineTypeOfWord($word) == self::COMMAND_TYPE) {
-            return [null, null];
-        }
+//        /* Cannot Parse Command Type */
+//        if (self::determineTypeOfWord($word) == self::COMMAND_TYPE) {
+//            return [null, null];
+//        }
 
         /* Having Default Value */
         if ($separatorPosition = strpos($word, '=')) {

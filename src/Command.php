@@ -28,8 +28,9 @@ class Command
     {
         /* Update Arguments */
         if ($arguments) {
-            foreach ($arguments as $argument => $value) {
-                $this->arguments[$argument] = $value;
+            $keys = array_keys($this->arguments);
+            for ($index = 0; $index < count($keys); $index++) {
+                $this->arguments[$keys[$index]] = $arguments[$index];
             }
         }
 

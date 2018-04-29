@@ -184,6 +184,8 @@ class Greet extends Command
 $ php example greet Senhung
 ```
 
+Output:
+
 ```
 Hello Senhung
 ```
@@ -196,6 +198,8 @@ Hello Senhung
 $ php example greet Senhung --with-exclamation
 ```
 
+Output:
+
 ```
 Hello Senhung!
 ```
@@ -203,8 +207,10 @@ Hello Senhung!
 #### With Option (Parameter)
 
 ```bash
-php example greet Senhung --with-exclamation --number-of-times=3
+$ php example greet Senhung --with-exclamation --number-of-times=3
 ```
+
+Output:
 
 ```
 Hello Senhung!

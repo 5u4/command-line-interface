@@ -2,13 +2,25 @@
 
 namespace Senhung\CLI;
 
+/**
+ * Class Service
+ * @package Senhung\CLI
+ *
+ * Helper class for Senhung\CLI\Command and Senhung\CLI\CommandEntry
+ */
 class Service
 {
+    /** Command Types */
     public const COMMAND_TYPE = 'COMMAND_TYPE';
     public const ARGUMENT_TYPE = 'ARGUMENT_TYPE';
     public const OPTION_TYPE = 'OPTION_TYPE';
 
-    public static function getAllCommands()
+    /**
+     * Get all registered commands
+     *
+     * @return array
+     */
+    public static function getAllCommands(): array
     {
         /* Get All Commands */
         $commands = [];
@@ -23,7 +35,13 @@ class Service
         return $commands;
     }
 
-    public static function parseSignature(string $signature)
+    /**
+     * Parse command signature to command, arguments and options
+     *
+     * @param string $signature
+     * @return array
+     */
+    public static function parseSignature(string $signature): array
     {
         /* Parse Signature to Array */
         $signature = explode(' ', trim($signature));
@@ -53,7 +71,15 @@ class Service
         return [$command, $arguments, $options];
     }
 
-    public static function runCommand(string $command, array $arguments = null, array $options = null)
+    /**
+     * Run command handle
+     *
+     * @param string $command
+     * @param array|null $arguments
+     * @param array|null $options
+     * @return void
+     */
+    public static function runCommand(string $command, array $arguments = null, array $options = null): void
     {
         $commandObject = new $command($arguments, $options);
 
@@ -62,7 +88,13 @@ class Service
         $commandObject->handle();
     }
 
-    public static function parse(string $word)
+    /**
+     * Parse an argument or option to its key and value
+     *
+     * @param string $word
+     * @return array
+     */
+    public static function parse(string $word): array
     {
         $word = ltrim(rtrim(trim($word), '}'), '{');
 
@@ -85,7 +117,7 @@ class Service
      * @param string $word
      * @return string
      */
-    public static function determineTypeOfWord(string $word)
+    public static function determineTypeOfWord(string $word): string
     {
         $word = ltrim(rtrim(trim($word), '}'), '{');
 

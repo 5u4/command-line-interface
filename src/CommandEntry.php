@@ -5,6 +5,10 @@ namespace Senhung\CLI;
 require_once 'Command.php';
 require_once 'Help.php';
 
+/**
+ * Class CommandEntry
+ * @package Senhung\CLI
+ */
 class CommandEntry
 {
     /** @var array $commands */
@@ -12,16 +16,22 @@ class CommandEntry
     /** @var bool $initialized */
     private static $initialized = false;
 
-    private static function initialize()
+    /**
+     * Initialize the class if haven't been initialized
+     *
+     * @return void
+     */
+    private static function initialize(): void
     {
-        if (self::$initialized) {
-            return;
+        /* If Not Initialized, Initialize */
+        if (!self::$initialized) {
+            self::$commands = Service::getAllCommands();
         }
-
-        self::$commands = Service::getAllCommands();
     }
 
     /**
+     * Command entry for running the desire command
+     *
      * @param $argv
      * @return void
      */
@@ -44,21 +54,25 @@ class CommandEntry
         $arguments = [];
         $options = [];
 
+        /* Parse Arguments and Options */
         for ($index = 2; $index < count($argv); $index++) {
+            /* Get Argument/Option Key and Value */
             list($key, $value) = Service::parse($argv[$index]);
 
-            $type = Service::determineTypeOfWord($argv[$index]);
-
-            /* Option */
-            if ($type == Service::OPTION_TYPE) {
+            /* Is Option */
+            if (Service::determineTypeOfWord($argv[$index]) == Service::OPTION_TYPE) {
+                /* Flag */
                 if (!$value) {
                     $options[$key] = true;
-                } else {
+                }
+
+                /* Parameter */
+                else {
                     $options[$key] = $value;
                 }
             }
 
-            /* Argument */
+            /* Is Argument */
             else {
                 $arguments[] = $key;
             }
@@ -78,10 +92,13 @@ class CommandEntry
     {
         self::initialize();
 
+        /* Make Directory */
         $commandDir = $_SERVER['DOCUMENT_ROOT'] . $dir;
 
+        /* Get All Files In Directory */
         $files = scandir($commandDir);
 
+        /* Require Files */
         foreach ($files as $file) {
             if ($file == '.' || $file == '..') {
                 continue;
@@ -91,7 +108,12 @@ class CommandEntry
         }
     }
 
-    public static function getCommands()
+    /**
+     * Get all commands
+     *
+     * @return array
+     */
+    public static function getCommands(): array
     {
         return self::$commands;
     }

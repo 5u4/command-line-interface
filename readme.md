@@ -158,9 +158,9 @@ use Senhung\CLI\Command;
 
 class Greet extends Command
 {
-    public $signature = 'greet {:name} {--with-exclamation} {--number-of-times=1}';
+    protected $signature = 'greet {:name} {--with-exclamation} {--number-of-times=1}';
 
-    public $description = 'Greet people';
+    protected $description = 'Greet people';
 
     public function handle()
     {
